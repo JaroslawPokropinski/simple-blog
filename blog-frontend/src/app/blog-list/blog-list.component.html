@@ -1,0 +1,6 @@
+<div class="post-list">
+  <mat-card *ngFor="let post of posts" class="post-card">
+    <mat-card-content>{{post.description}}</mat-card-content>
+    <img *ngIf="post.image != null" mat-card-image src="{{post.image}}" alt="Post image">
+  </mat-card>
+</div>
