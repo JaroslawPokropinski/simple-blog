@@ -1,6 +1,17 @@
-<div class="post-list">
-  <mat-card *ngFor="let post of posts" class="post-card">
-    <mat-card-content>{{post.description}}</mat-card-content>
-    <img *ngIf="post.image != null" mat-card-image src="{{post.image}}" alt="Post image">
+<mat-toolbar>
+  <span>An example blog</span>
+</mat-toolbar>
+
+<div class="m-10 flex flex-col items-center">
+  <mat-card *ngFor="let post of posts" class="w-full max-w-3xl mb-10">
+    <mat-card-header *ngIf="post.title != null" class="mb-3">
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>{{post.title}}</mat-card-title>
+    </mat-card-header>
+    <img *ngIf="post.image != null" class="max-w-none" mat-card-image src="{{post.image}}" alt="Post image">
+    <mat-card-content *ngIf="post.description != null" class="break-words">
+      <p>{{post.description}}</p>
+    </mat-card-content>
+
   </mat-card>
 </div>

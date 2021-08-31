@@ -19,8 +19,8 @@ public class SecurityConfig {
   @Bean
   public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http) {
     return http.authorizeExchange().pathMatchers(HttpMethod.GET, "/post").permitAll()
-        .pathMatchers(HttpMethod.OPTIONS, "/post").permitAll().anyExchange().authenticated().and().httpBasic().and()
-        .csrf().disable().build();
+        .pathMatchers(HttpMethod.OPTIONS, "/post").permitAll().pathMatchers("/h2-console/**").permitAll().anyExchange()
+        .authenticated().and().httpBasic().and().csrf().disable().build();
   }
 
   @Bean

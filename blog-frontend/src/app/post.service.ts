@@ -26,6 +26,10 @@ export class PostService {
       'Something bad happened; please try again later.');
   }
 
+  private comparePosts(p1: Post, p2: Post) {
+    return p1.description === p2.description && p1.id === p2.id && p1.image === p1.image && p2.title === p2.title;
+  }
+
     private readonly _url = 'http://localhost:8080';
 
     constructor(private http: HttpClient) {
@@ -50,7 +54,7 @@ export class PostService {
             if (post.id == null) return;
             const prev = results.get(post.id);
             // If post is new or changed then add it to / replace it in map
-            if (prev == null || (post.description !== prev.description || post.image !== prev.image)) {
+            if (prev == null || !this.comparePosts(post, prev)) {
               results.set(post.id, post);
             }
 
